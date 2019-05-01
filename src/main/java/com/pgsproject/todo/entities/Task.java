@@ -1,6 +1,8 @@
 package com.pgsproject.todo.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "TASK")
@@ -11,15 +13,17 @@ public class Task {
     @Column(name = "ID")
     private long id;
 
+    @Size(min = 3, max = 100, message = "Should be longer than 3 and shorter than 100")
     @Column(name = "DESCRIPTION")
     private String description;
 
+    @NotNull(message = "Task should have owner")
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID")
     private User user;
 
     //Empty constructor for JPA
-    protected Task(){
+    public Task(){
     }
 
     public long getId() {

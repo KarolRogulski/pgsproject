@@ -1,7 +1,9 @@
 package com.pgsproject.todo.repositories;
 
 import com.pgsproject.todo.entities.Task;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TaskRepository extends JpaRepository<Task, Long> {
+@Repository
+public interface TaskRepository extends PagingAndSortingRepository<Task, Long> {
 }
